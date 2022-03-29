@@ -42,9 +42,8 @@ jobs:
           python-version: 2.7
       - name: Configure Windows env
         run: |
-          Invoke-WebRequest https://go.microsoft.com/fwlink/?LinkId=746572 -OutFile VC_redist.x64.exe
-          Start-Process VC_redist.x64.exe "/q","/norestart"
-          npm config set msvs_version 2017
+          Invoke-WebRequest https://go.microsoft.com/fwlink/?LinkId=615460 -OutFile VC_redist_2015.x64.exe
+          Start-Process VC_redist_2015.x64.exe "/q","/norestart"
         if: ${{ startsWith(matrix.os, 'windows') }}
 
         # See https://github.com/nodejs/node-gyp/issues/1574#issuecomment-554187531
