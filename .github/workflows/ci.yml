@@ -16,7 +16,7 @@ jobs:
       matrix:
         # node: [16, 14, 12, 10]
         node: [16]
-        os: [windows-2019, macos-latest, ubuntu-latest]
+        os: [windows-2019] #, macos-latest, ubuntu-latest]
         arch: [x64]
         # include:
         #   - os: windows-2019
