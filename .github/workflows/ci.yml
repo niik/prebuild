@@ -43,7 +43,7 @@ jobs:
       - name: Configure Windows env
         run: |
           Invoke-WebRequest https://go.microsoft.com/fwlink/?LinkId=746572 -OutFile VC_redist.x64.exe
-          VC_redist.x64.exe /q /norestart
+          Start-Process VC_redist.x64.exe "/q","/norestart"
         if: ${{ startsWith(matrix.os, 'windows') }}
 
         # See https://github.com/nodejs/node-gyp/issues/1574#issuecomment-554187531
