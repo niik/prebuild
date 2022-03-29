@@ -43,6 +43,11 @@ jobs:
       - name: Configure Windows env
         run: npm config set msvs_version 2019
         if: ${{ startsWith(matrix.os, 'windows') }}
+      - name: Configure macOS env
+        run: |
+          echo "CXXFLAGS=-mmacosx-version-min=10.9" >> $GITHUB_ENV
+          echo "LDFLAGS=-mmacosx-version-min=10.9" >> $GITHUB_ENV
+        if: ${{ startsWith(matrix.os, 'macos') }}
       - name: Python byteorder
         run: python -c "import sys; print sys.byteorder"
       - name: Use Node.js ${{ matrix.node }}
