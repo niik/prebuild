@@ -41,6 +41,8 @@ jobs:
           python-version: 3.6
       - name: Python version
         run: python --version
+      - name: Python byteorder
+        run: python -c "import sys; print sys.byteorder"
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v2
         with:
