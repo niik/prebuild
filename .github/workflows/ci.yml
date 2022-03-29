@@ -31,7 +31,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
-          architecture: ${{ matric.arch }}
+          architecture: ${{ matrix.arch }}
       - name: Install
         run: npm install
         env:
