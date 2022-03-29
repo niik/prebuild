@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         node: [16]
-        os: [windows-latest, macos-latest, ubuntu-latest]
+        os: [windows-2019, macos-latest, ubuntu-latest]
         arch: [x64]
     timeout-minutes: 60
     steps:
