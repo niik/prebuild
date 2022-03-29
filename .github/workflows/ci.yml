@@ -40,9 +40,12 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 2.7
-      - name: Configure Windows env
-        run: npm config set msvs_version 2019
-        if: ${{ matrix.os == 'windows-2019' }}
+      - name: Install Visual Studio 2015 on Windows
+        if: ${{ contains(matrix.os, 'windows') }}
+        run: |
+          choco install visualcpp-build-tools --version=14.0.25420.1 --ignore-dependencies -y --params "'/IncludeRequired'"
+          echo ::set-env name=VCTargetsPath::'C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\v140'
+          npm config set msvs_version 2015
 
         # See https://github.com/nodejs/node-gyp/issues/1574#issuecomment-554187531
       - name: Configure macOS env
