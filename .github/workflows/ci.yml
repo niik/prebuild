@@ -14,22 +14,23 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node: [16, 14, 12, 10]
+        # node: [16, 14, 12, 10]
+        node: [16]
         os: [windows-2019, macos-latest, ubuntu-latest]
         arch: [x64]
-        include:
-          - os: windows-2019
-            arch: x86
-            node: 16
-          - os: windows-2019
-            arch: x86
-            node: 14
-          - os: windows-2019
-            arch: x86
-            node: 12
-          - os: windows-2019
-            arch: x86
-            node: 10
+        # include:
+        #   - os: windows-2019
+        #     arch: x86
+        #     node: 16
+        #   - os: windows-2019
+        #     arch: x86
+        #     node: 14
+        #   - os: windows-2019
+        #     arch: x86
+        #     node: 12
+        #   - os: windows-2019
+        #     arch: x86
+        #     node: 10
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
@@ -39,8 +40,6 @@ jobs:
         if: ${{ contains(matrix.os, 'windows') }}
         run: |
           npm config set msvs_version 2019
-          echo "GYP_MSVS_OVERRIDE_PATH=C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\" >> $GITHUB_ENV
-          echo "GYP_MSVS_VERSION=2019" >> $GITHUB_ENV
         # See https://github.com/nodejs/node-gyp/issues/1574#issuecomment-554187531
       - name: Configure macOS env
         run: |
@@ -65,3 +64,5 @@ jobs:
           TARGET_ARCH: ${{ matrix.arch }}
       - name: Test
         run: npm test
+        env:
+          GYP_MSVS_OVERRIDE_PATH: "helloo?"
