@@ -53,8 +53,6 @@ jobs:
           echo "CXXFLAGS=-mmacosx-version-min=10.9" >> $GITHUB_ENV
           echo "LDFLAGS=-mmacosx-version-min=10.9" >> $GITHUB_ENV
         if: ${{ startsWith(matrix.os, 'macos') }}
-      - name: Python byteorder
-        run: python -c "import sys; print sys.byteorder"
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v2
         with:
