@@ -65,4 +65,5 @@ jobs:
       - name: Test
         run: npm test
         env:
-          GYP_MSVS_OVERRIDE_PATH: "helloo?"
+          GYP_MSVS_OVERRIDE_PATH: C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\
+          GYP_MSVS_VERSION: 2019
