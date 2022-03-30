@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - aaaaaan-action-s
   pull_request:
 
 jobs:
@@ -41,6 +40,11 @@ jobs:
           echo "CXXFLAGS=-mmacosx-version-min=10.9" >> $GITHUB_ENV
           echo "LDFLAGS=-mmacosx-version-min=10.9" >> $GITHUB_ENV
         if: ${{ startsWith(matrix.os, 'macos') }}
+        # Needed to fix node-webkit prebuilds, see https://github.com/nwjs/node/issues/46
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: 2.7
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v2
         with:
